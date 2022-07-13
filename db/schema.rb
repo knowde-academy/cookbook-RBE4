@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2022_07_12_111528) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price", precision: 8, scale: 2
+    t.integer "level"
   end
 
 end
