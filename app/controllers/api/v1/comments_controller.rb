@@ -10,7 +10,7 @@ module Api
         if @comment.save
           render json: @comment
         else
-          render json:{errors: @comment.errors.messages}
+          render json:{ errors: @comment.errors.messages }
         end
       end
     
@@ -21,7 +21,7 @@ module Api
       end
       
       def record_not_found
-        render json: {errors: "recipe not found"}
+        render json: { errors: "recipe not found" }
       end
     end
   end
