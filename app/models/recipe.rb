@@ -7,6 +7,8 @@ class Recipe < ApplicationRecord
   # without it you can pass e.g. 1.12345 and it's casted and rounded by default
   validate :price_before_cast
   
+  has_many :comments, lambda { order(created_at: :desc) }
+  
   private
   def price_before_cast
     # Regex is only matched against strings
