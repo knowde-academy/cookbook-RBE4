@@ -31,10 +31,7 @@ ActiveRecord::Schema.define(version: 2022_07_14_073122) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "level"
     t.decimal "price", precision: 8, scale: 2
-<<<<<<< HEAD
-=======
     t.integer "time"
->>>>>>> main
   end
 
 end
