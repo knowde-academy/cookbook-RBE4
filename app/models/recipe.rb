@@ -4,7 +4,10 @@ class Recipe < ApplicationRecord
   validates :price, numericality: { greater_than: 0.0, less_than: 10**6 }, allow_nil: true
   
   # without it you can pass e.g. 1.12345 and it's casted and rounded by default
-  validate :price_before_cast 
+  validate :price_before_cast
+  
+  has_many :product_recipes, dependent: :destroy
+  has_many :products, through: :product_recipes
   
   private
   def price_before_cast
@@ -14,4 +17,3 @@ class Recipe < ApplicationRecord
     end
   end
 end
-
