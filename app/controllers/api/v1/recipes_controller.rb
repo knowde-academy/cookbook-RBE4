@@ -2,6 +2,7 @@ module Api
   module V1
     class RecipesController < ApplicationController
       before_action :set_recipe, except: %i[create index]
+      before_action :set_product, only: %i[add_product delete_product]
       
       def index
         render json: { data: ActiveModel::SerializableResource.new(Recipe.all, each_serializer: RecipeSerializer) }
@@ -36,17 +37,12 @@ module Api
         end
       end
       
-      def createproduct
-        Product.find(params[:product_id])
-        Recipe.find(params[:id])
-        
-        # Check if product arleady exists and return if present
-        if ProductRecipe.find_by(recipe_id: params[:id], product_id: params[:product_id]).present?  
-          render json: { errors: "Product arleady exists on recipe." }, status: :unprocessable_entity and return
-        end
-        
-        product_recipe = ProductRecipe.new(product_params)
-        product_recipe.update(product_id: params[:product_id], recipe_id: params[:id])
+      def add_product
+        product_recipe = ProductRecipe.new(
+          quantity: product_params[:quantity], 
+          product: @product, 
+          recipe: @recipe
+        )
         
         if product_recipe.save
           render json: product_recipe
@@ -55,12 +51,8 @@ module Api
         end
       end
       
-      def destroyproduct
-        product_recipe = ProductRecipe.find_by(recipe_id: params[:id], product_id: params[:product_id])
-        
-        unless product_recipe.present?
-          render json: { errors: "Product doesn't exists." }, status: :unprocessable_entity and return
-        end
+      def delete_product
+        product_recipe = @recipe.product_recipes.find_by!(product_id: @product.id)
         
         if product_recipe.destroy
           render json: product_recipe
@@ -81,6 +73,10 @@ module Api
 
       def set_recipe
         @recipe = Recipe.find(params[:id])
+      end
+      
+      def set_product
+        @product = Product.find(params[:product_id])
       end
     end
   end

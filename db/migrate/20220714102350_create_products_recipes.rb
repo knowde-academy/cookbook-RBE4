@@ -7,5 +7,7 @@ class CreateProductsRecipes < ActiveRecord::Migration[6.1]
       
       t.timestamps
     end
+    
+    add_index :product_recipes, [:recipe_id, :product_id], unique: true
   end
 end

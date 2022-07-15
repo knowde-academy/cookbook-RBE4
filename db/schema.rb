@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2022_07_14_102350) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_product_recipes_on_product_id"
+    t.index ["recipe_id", "product_id"], name: "index_product_recipes_on_recipe_id_and_product_id", unique: true
     t.index ["recipe_id"], name: "index_product_recipes_on_recipe_id"
   end
 

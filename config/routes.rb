@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :recipes do
         member do
-          post 'products/:product_id', to: 'recipes#createproduct'
-          delete 'products/:product_id', to: 'recipes#destroyproduct'
+          post :add_product
+          delete :delete_product
         end
       end
       
