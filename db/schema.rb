@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 2022_07_14_102350) do
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.string "author", null: false
-    t.integer "rating", null: false
-    t.integer "recipe_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id"], name: "index_ratings_on_recipe_id"
-  end
-  
   create_table "product_recipes", force: :cascade do |t|
     t.bigint "recipe_id", null: false
     t.bigint "product_id", null: false
@@ -51,13 +42,22 @@ ActiveRecord::Schema.define(version: 2022_07_14_102350) do
     t.index ["name"], name: "index_products_on_name", unique: true
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.string "author", null: false
+    t.integer "rating", null: false
+    t.integer "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_ratings_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name", null: false
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "level"
     t.decimal "price", precision: 8, scale: 2
+    t.integer "level"
     t.integer "time"
   end
 
