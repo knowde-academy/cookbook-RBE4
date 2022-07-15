@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :recipes do
         resources :comments, only: [:create]
+        resources :ratings, only: [:create]
       end
     end
   end
