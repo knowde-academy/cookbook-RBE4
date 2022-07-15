@@ -5,7 +5,13 @@ Rails.application.routes.draw do
       resources :recipes do
         resources :comments, only: [:create]
         resources :ratings, only: [:create]
+        member do
+          post :add_product
+          delete :delete_product
+        end
       end
+      
+      resources :products
     end
   end
 end

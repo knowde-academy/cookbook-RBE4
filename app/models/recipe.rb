@@ -9,6 +9,8 @@ class Recipe < ApplicationRecord
   
   has_many :comments, lambda { order(created_at: :desc) }
   has_many :ratings, lambda { order(created_at: :desc) }
+  has_many :product_recipes, dependent: :destroy
+  has_many :products, through: :product_recipes
   
   private
   def price_before_cast
@@ -18,4 +20,3 @@ class Recipe < ApplicationRecord
     end
   end
 end
-
