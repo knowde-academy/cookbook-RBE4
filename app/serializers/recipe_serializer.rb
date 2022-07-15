@@ -1,5 +1,5 @@
 class RecipeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :content, :price, :level, :comments, :time
+  attributes :id, :name, :content, :price, :level, :comments, :time, :ratings
   
   def price
     object.price ? object.price.to_f : "unknown"

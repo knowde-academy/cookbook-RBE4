@@ -8,6 +8,7 @@ class Recipe < ApplicationRecord
   validate :price_before_cast
   
   has_many :comments, lambda { order(created_at: :desc) }
+  has_many :ratings, lambda { order(created_at: :desc) }
   
   private
   def price_before_cast
