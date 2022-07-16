@@ -2,6 +2,7 @@ module Api
   module V1
     class ProductsController < ApplicationController
       before_action :set_product, except: %i[create index]
+      before_action :authenticate_user!
       
       def index
         render json: { data: ActiveModel::SerializableResource.new(Product.all, each_serializer: ProductSerializer) }
