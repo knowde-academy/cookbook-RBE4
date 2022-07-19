@@ -1,5 +1,6 @@
 class RecipeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :content, :price, :level, :comments, :time, :ratings, :products
+  attributes :id, :name, :content, :price, :level, :comments, :time, :ratings, :products, :video_link
+  
   
   def products
     self.object.product_recipes.map do |item|
@@ -21,5 +22,9 @@ class RecipeSerializer < ActiveModel::Serializer
   
   def time
     object.time || "unknown"
+  end
+  
+  def video_link
+    object.video_link || "unknown"
   end
 end
