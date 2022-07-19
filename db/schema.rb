@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_091048) do
     t.integer "level"
     t.decimal "price", precision: 8, scale: 2
     t.integer "time"
+    t.string "video_link"
   end
 
   create_table "users", force: :cascade do |t|
