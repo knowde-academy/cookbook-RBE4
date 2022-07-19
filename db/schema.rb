@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_073407) do
+ActiveRecord::Schema.define(version: 2022_07_19_091048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string "author", null: false
     t.string "body", null: false
     t.integer "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "product_recipes", force: :cascade do |t|
@@ -56,8 +57,8 @@ ActiveRecord::Schema.define(version: 2022_07_19_073407) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "price", precision: 8, scale: 2
     t.integer "level"
+    t.decimal "price", precision: 8, scale: 2
     t.integer "time"
     t.string "video_link"
   end
@@ -82,6 +83,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_073407) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "product_recipes", "products"
   add_foreign_key "product_recipes", "recipes"
 end
