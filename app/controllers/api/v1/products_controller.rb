@@ -1,6 +1,7 @@
 module Api
   module V1
     class ProductsController < ApplicationController
+      before_action :authenticate_user!, only: %i[create update destroy]
       before_action :set_product, except: %i[create index]
       
       def index
