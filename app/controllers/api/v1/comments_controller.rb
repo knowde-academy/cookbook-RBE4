@@ -16,8 +16,7 @@ module Api
       end
       
       def destroy
-        # render json: { test: current_user.comments  } and return 
-        comment = current_user.comments.find_by!(id: params[:id])
+        comment = current_user.comments.find(params[:id])
         
         if comment.destroy
           render json: comment
