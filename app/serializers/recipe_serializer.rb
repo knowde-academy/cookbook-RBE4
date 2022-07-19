@@ -1,7 +1,6 @@
 class RecipeSerializer < ActiveModel::Serializer
   attributes :id, :name, :content, :price, :level, :comments, :time, :ratings, :products, :video_link
   
-  
   def products
     self.object.product_recipes.map do |item|
       {
