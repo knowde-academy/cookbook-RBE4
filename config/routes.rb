@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :recipes do
-        resources :comments, only: [:create]
+        resources :comments, only: [:create, :destroy]
         resources :ratings, only: [:create, :destroy]
         member do
           post :add_product
