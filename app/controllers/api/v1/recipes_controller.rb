@@ -40,6 +40,7 @@ module Api
       def add_product
         product_recipe = ProductRecipe.new(
           quantity: product_params[:quantity], 
+          price: product_params[:price], 
           product: @product, 
           recipe: @recipe
         )
@@ -64,11 +65,11 @@ module Api
       private
 
       def recipe_params
-        params.require(:recipe).permit(%i[name content level price time video_link])
+        params.require(:recipe).permit(%i[name content level time video_link])
       end
       
       def product_params
-        params.require(:product).permit(%i[quantity])
+        params.require(:product).permit(%i[quantity price])
       end
 
       def set_recipe

@@ -1,5 +1,5 @@
 class ProductRecipeSerializer < ActiveModel::Serializer
-  attributes :id, :product, :quantity
+  attributes :id, :product, :quantity, :price
   
   def id
     object.product.id
@@ -11,5 +11,9 @@ class ProductRecipeSerializer < ActiveModel::Serializer
   
   def quantity
     object.quantity
+  end
+  
+  def price
+    object.price
   end
 end
