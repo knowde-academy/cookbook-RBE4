@@ -6,7 +6,8 @@ class RecipeSerializer < ActiveModel::Serializer
       {
         id: item.product.id, 
         name: item.product.name,
-        quantity: item.quantity
+        quantity: item.quantity,
+        price: item.price
       }
     end
   end

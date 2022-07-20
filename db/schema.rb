@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_102417) do
+ActiveRecord::Schema.define(version: 2022_07_20_094005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_102417) do
     t.integer "quantity", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "price", precision: 8, scale: 2, default: "0.0"
     t.index ["product_id"], name: "index_product_recipes_on_product_id"
     t.index ["recipe_id", "product_id"], name: "index_product_recipes_on_recipe_id_and_product_id", unique: true
     t.index ["recipe_id"], name: "index_product_recipes_on_recipe_id"
@@ -60,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_102417) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "level"
-    t.decimal "price", precision: 8, scale: 2
+    t.decimal "price", precision: 8, scale: 2, default: "0.0"
     t.integer "time"
     t.string "video_link"
   end
