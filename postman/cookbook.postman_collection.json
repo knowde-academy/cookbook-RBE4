@@ -1,0 +1,909 @@
+{
+	"info": {
+		"_postman_id": "f542c6c5-b1d2-45c1-8ad8-109bfc5dd771",
+		"name": "cookbook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21999210"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "/sign_up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin3@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/auth",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/sign_in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin3@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "zle_haslo",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/auth/sign_in",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"auth",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "/products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/products",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/products/1",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product[name]",
+									"value": "papryka",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/products",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product[name]",
+									"value": "ser",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "product[name]",
+									"value": "majeranek",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/products/7",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/products/7",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recipes",
+			"item": [
+				{
+					"name": "/recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "recipe[name]",
+									"value": "Schabowe",
+									"type": "text"
+								},
+								{
+									"key": "recipe[price]",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "recipe[time]",
+									"value": "60",
+									"type": "text"
+								},
+								{
+									"key": "recipe[level]",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "recipe[video_link]",
+									"value": "https://www.youtube.com/watch?v=RpOzNjkKFHM",
+									"type": "text"
+								},
+								{
+									"key": "recipe[content]",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "recipe[name]",
+									"value": "Mielone",
+									"type": "text"
+								},
+								{
+									"key": "recipe[price]",
+									"value": "28",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/5",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/5",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product_recipe",
+			"item": [
+				{
+					"name": "/recipes/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id/add_product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product[quantity]",
+									"value": "-1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "product[quantity]",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3/add_product?product_id=4",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3",
+								"add_product"
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id/delete_product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3/delete_product?product_id=4",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3",
+								"delete_product"
+							],
+							"query": [
+								{
+									"key": "product_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rating",
+			"item": [
+				{
+					"name": "/recipes/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id/ratings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "rating[rating]",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3/ratings",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id/ratings/:id/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3/ratings/4/",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3",
+								"ratings",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "/recipes/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id/comments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "comment[body]",
+									"value": "za krótki",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "comment[body]",
+									"value": "Lorem ipsum dolor sit amet.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/3/comments",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"3",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/:id/comments/:id/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{access-token}}",
+								"type": "text"
+							},
+							{
+								"key": "client",
+								"value": "{{client}}",
+								"type": "text"
+							},
+							{
+								"key": "uid",
+								"value": "{{uid}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{cookbook-api}}:8082/api/v1/recipes/1/comments/4/",
+							"protocol": "http",
+							"host": [
+								"{{cookbook-api}}"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"v1",
+								"recipes",
+								"1",
+								"comments",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/sign_out",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "access-token",
+						"value": "{{access-token}}",
+						"type": "text"
+					},
+					{
+						"key": "client",
+						"value": "{{client}}",
+						"type": "text"
+					},
+					{
+						"key": "uid",
+						"value": "{{uid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://{{cookbook-api}}:8082/auth/sign_out",
+					"protocol": "http",
+					"host": [
+						"{{cookbook-api}}"
+					],
+					"port": "8082",
+					"path": [
+						"auth",
+						"sign_out"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
